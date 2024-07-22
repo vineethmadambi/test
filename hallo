@@ -1,1 +1,40 @@
-hallo
+import React from 'react';
+import { Table } from '@/components/ui/table';
+
+const data = [
+  { stammdaten: "Kontaktstamm (A)", sender: "Firma 001", empfaenger: ["Firma 100", "Firma 500", "Firma 104", "Firma 120"] },
+  { stammdaten: "Kundenstamm (B)", sender: "Firma 001", empfaenger: ["Alle Firmen"] },
+  { stammdaten: "Lieferantstamm (C)", sender: "Firma 001", empfaenger: ["Alle Firmen"] },
+  { stammdaten: "TeileStamm (D)", sender: "Firma 100", empfaenger: ["Firma 001", "Firma 101", "Firma 102", "Firma 103", "Firma 104", "Firma 120"] },
+  { stammdaten: "Seriennummern (E)", sender: "Firma 100", empfaenger: ["Firma 500"] },
+  { stammdaten: "Serviceobjekt (F)", sender: "Firma 100", empfaenger: ["Firma 500"] },
+  { stammdaten: "TeileStamm_02 (G)", sender: "Firma 100", empfaenger: ["Firma 500"] },
+];
+
+const StammdatenFlowTable = () => {
+  return (
+    <div className="container mx-auto p-4">
+      <h2 className="text-2xl font-bold mb-4">Stammdaten Flow Table</h2>
+      <Table>
+        <Table.Header>
+          <Table.Row>
+            <Table.Head className="w-1/3">Stammdaten</Table.Head>
+            <Table.Head className="w-1/3">Sender</Table.Head>
+            <Table.Head className="w-1/3">Empfänger</Table.Head>
+          </Table.Row>
+        </Table.Header>
+        <Table.Body>
+          {data.map((item, index) => (
+            <Table.Row key={index}>
+              <Table.Cell className="font-medium">{item.stammdaten}</Table.Cell>
+              <Table.Cell>{item.sender}</Table.Cell>
+              <Table.Cell>{item.empfaenger.join(", ")}</Table.Cell>
+            </Table.Row>
+          ))}
+        </Table.Body>
+      </Table>
+    </div>
+  );
+};
+
+export default StammdatenFlowTable;
